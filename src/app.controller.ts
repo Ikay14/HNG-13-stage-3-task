@@ -10,7 +10,7 @@ export class AppController {
 
   @Post('refresh')
   async refresh() {
-    return this.appService.refreshCountries();
+    return this.appService.refreshCountries()
   }
 
   @Get()
@@ -24,7 +24,7 @@ export class AppController {
 
     @Get('status')
     async getStatus() {
-    return this.appService.getStatus();
+    return this.appService.getStatus()
   }
 
   @Get('image')
@@ -35,7 +35,7 @@ export class AppController {
       throw new HttpException(
         { error: 'Summary image not found' },
         HttpStatus.NOT_FOUND
-      );
+      )
     }
 
     res.sendFile(imagePath);
