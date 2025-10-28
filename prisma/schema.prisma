@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+}
+
+model Country {
+  id                Int      @id @default(autoincrement())
+  name              String   @unique
+  capital           String?
+  region            String?
+  population        Int
+  currency_code     String?
+  exchange_rate     Float?
+  estimated_gdp     Float?
+  flag_url          String?  @db.Text
+  last_refreshed_at DateTime @default(now())
+
+  @@index([region])
+  @@index([currency_code])
+  @@map("countries")
+}
+
+model SystemStatus {
+  id                Int      @id @default(1)
+  last_refreshed_at DateTime @default(now())
+
+  @@map("system_status")
+}
