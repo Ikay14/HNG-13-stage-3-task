@@ -84,8 +84,9 @@ export class AppService {
         where: { id: 1 },
         update: { last_refreshed_at: now },
         create: { id: 1, last_refreshed_at: now },
-      });
+      })
 
+      this.logger.log('Countries refreshed successfully')
       await this.generateSummaryImage();
 
       return { message: 'Countries refreshed successfully', timestamp: now };
