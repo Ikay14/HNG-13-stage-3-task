@@ -7,5 +7,5 @@ export class AgentRequestDto {
 
   @IsOptional()
   @IsObject()
-  context?: Record<string, any>;
+  context?: Record<string, any>
 }
